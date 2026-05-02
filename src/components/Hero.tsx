@@ -91,7 +91,7 @@ export default function Hero() {
         {isPlaying && (
           <iframe 
             src="https://player.vimeo.com/video/1188341632?autoplay=1&title=0&byline=0&portrait=0"
-            className="w-full h-full object-cover"
+            className="w-full h-full scale-[1.35] md:scale-[1.45]"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

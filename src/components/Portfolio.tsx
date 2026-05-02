@@ -125,7 +125,7 @@ export default function Portfolio() {
                 project.video.includes('vimeo.com') ? (
                   <iframe 
                     src={project.video}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full scale-[1.35] md:scale-[1.45]"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen

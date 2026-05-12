@@ -14,13 +14,13 @@ export default function Navbar({ onNavigate, currentScreen = 'home' }: NavbarPro
         <div className="flex items-center gap-6 mx-auto max-w-7xl w-full justify-between px-2">
           <div className="flex items-center gap-4">
             <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=karandangi1867@gmail.com" 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer font-bold"
             >
               <Mail className="w-3 h-3 text-accent-400" />
-              karandangi1867@gmail.com
+              hello.aeymotion@gmail.com
             </a>
           </div>
           <div className="flex items-center gap-2">

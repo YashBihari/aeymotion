@@ -105,14 +105,14 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="flex items-center gap-8">
           {/* Gmail */}
           <a 
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=karandangi1867@gmail.com" 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="group flex items-center cursor-pointer transition-all duration-500 overflow-hidden"
           >
             <Mail className="w-5 h-5 text-brand-500 group-hover:text-[#EA4335] shrink-0 transition-all duration-500 group-hover:scale-110 drop-shadow-none group-hover:drop-shadow-[0_0_8px_rgba(234,67,53,0.4)]" />
             <span className="text-[10px] font-black uppercase tracking-widest text-[#EA4335] max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pl-3 transition-all duration-500 whitespace-nowrap">
-              karandangi1867@gmail.com
+              hello.aeymotion@gmail.com
             </span>
           </a>
 

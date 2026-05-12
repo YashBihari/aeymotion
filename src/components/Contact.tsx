@@ -38,7 +38,7 @@ export default function Contact() {
 
     try {
       // Proxy forwarding address configurable via environment variable or default fallback Web App link.
-      // Target email address karandangi1867@gmail.com is strictly configured on the Apps Script backend logic.
+      // Target email address is strictly configured and encapsulated within the Apps Script backend logic.
       const proxyEndpoint = (import.meta as any).env?.VITE_LEAD_INGEST_URL || "https://script.google.com/macros/s/AKfycbwAq-ovYrRrDXBQqSVKDMSxD4BBBhJOtC5CwjP_XkFISgBzskjhtodOa6O9lVt2cAXz/exec";
       
       await fetch(proxyEndpoint, {
@@ -178,7 +178,7 @@ export default function Contact() {
 
               {submitStatus === 'error' && (
                 <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-400 font-medium">
-                  Connection error. Please email us directly at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karandangi1867@gmail.com" target="_blank" rel="noopener noreferrer" className="underline text-white font-bold">karandangi1867@gmail.com</a>
+                  Connection error. Please email us directly at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" target="_blank" rel="noopener noreferrer" className="underline text-white font-bold">hello.aeymotion@gmail.com</a>
                 </div>
               )}
 

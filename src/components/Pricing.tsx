@@ -365,7 +365,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
           className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-950/80 border border-brand-800/80 text-xs font-bold uppercase tracking-wider text-brand-300 hover:text-white hover:bg-brand-900 transition-all backdrop-blur-md shadow-md cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 text-accent-500 group-hover:-translate-x-1 transition-transform" />
-          ← Return to Dashboard Engine
+          <span>Return to Dashboard</span>
         </button>
       </div>
 

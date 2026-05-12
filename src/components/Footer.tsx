@@ -1,4 +1,4 @@
-import { Sparkles, Star, Mail, Instagram, Dribbble } from 'lucide-react';
+import { Sparkles, Star, Mail, Instagram, Dribbble, Linkedin } from 'lucide-react';
 
 interface FooterProps {
   onNavigate?: (screen: 'home' | 'pricing' | 'services' | 'portfolio') => void;
@@ -102,42 +102,44 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto mt-8 flex flex-col sm:flex-row justify-between items-center gap-6 text-[10px] font-mono uppercase text-brand-500">
         <p>© {new Date().getFullYear()} Aeymotion Conversion Framework. Engineered Strictly For ROI.</p>
         
-        <div className="flex items-center gap-8">
-          {/* Gmail */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-4 sm:mt-0">
+          {/* Gmail Link */}
           <a 
             href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="group flex items-center cursor-pointer transition-all duration-500 overflow-hidden"
+            className="px-4 py-2 rounded-full bg-brand-900/60 hover:bg-brand-900 border border-brand-800/80 hover:border-[#EA4335]/50 flex items-center gap-2 group transition-all duration-300 shadow-md hover:shadow-[#EA4335]/10 cursor-pointer backdrop-blur-sm"
           >
-            <Mail className="w-5 h-5 text-brand-500 group-hover:text-[#EA4335] shrink-0 transition-all duration-500 group-hover:scale-110 drop-shadow-none group-hover:drop-shadow-[0_0_8px_rgba(234,67,53,0.4)]" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#EA4335] max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pl-3 transition-all duration-500 whitespace-nowrap">
+            <Mail className="w-4 h-4 text-brand-400 group-hover:text-[#EA4335] transition-colors group-hover:scale-110 duration-300" />
+            <span className="text-[11px] font-black uppercase tracking-wider text-white group-hover:text-[#EA4335] transition-colors">
               hello.aeymotion@gmail.com
             </span>
           </a>
 
-          {/* Instagram */}
+          {/* LinkedIn Link (Routes to brand email) */}
           <a 
-            href="https://www.instagram.com/aey.motion/" 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="group flex items-center cursor-pointer transition-all duration-500 overflow-hidden"
+            className="px-4 py-2 rounded-full bg-brand-900/60 hover:bg-brand-900 border border-brand-800/80 hover:border-[#0A66C2]/50 flex items-center gap-2 group transition-all duration-300 shadow-md hover:shadow-[#0A66C2]/10 cursor-pointer backdrop-blur-sm"
+            title="Connect on LinkedIn via hello.aeymotion@gmail.com"
           >
-            <Instagram className="w-5 h-5 text-brand-500 group-hover:text-[#E1306C] shrink-0 transition-all duration-500 group-hover:scale-110 drop-shadow-none group-hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.4)]" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#E1306C] max-w-0 opacity-0 group-hover:max-w-[120px] group-hover:opacity-100 group-hover:pl-3 transition-all duration-500 whitespace-nowrap">
-              @aey.motion
+            <Linkedin className="w-4 h-4 text-brand-400 group-hover:text-[#0A66C2] transition-colors group-hover:scale-110 duration-300" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-300 group-hover:text-white transition-colors">
+              LinkedIn
             </span>
           </a>
 
-          {/* Dribbble */}
+          {/* Dribbble Link (Routes to brand email) */}
           <a 
-            href="https://dribbble.com/aeymotion" 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="group flex items-center cursor-pointer transition-all duration-500 overflow-hidden"
+            className="px-4 py-2 rounded-full bg-brand-900/60 hover:bg-brand-900 border border-brand-800/80 hover:border-[#EA4C89]/50 flex items-center gap-2 group transition-all duration-300 shadow-md hover:shadow-[#EA4C89]/10 cursor-pointer backdrop-blur-sm"
+            title="Request Dribbble portfolio link via hello.aeymotion@gmail.com"
           >
-            <Dribbble className="w-5 h-5 text-brand-500 group-hover:text-[#EA4C89] shrink-0 transition-all duration-500 group-hover:scale-110 drop-shadow-none group-hover:drop-shadow-[0_0_8px_rgba(234,76,137,0.4)]" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#EA4C89] max-w-0 opacity-0 group-hover:max-w-[120px] group-hover:opacity-100 group-hover:pl-3 transition-all duration-500 whitespace-nowrap">
+            <Dribbble className="w-4 h-4 text-brand-400 group-hover:text-[#EA4C89] transition-colors group-hover:scale-110 duration-300" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-300 group-hover:text-white transition-colors">
               Dribbble
             </span>
           </a>

@@ -112,24 +112,29 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="relative rounded-[2rem] bg-gradient-to-br from-[#f4f4f5] via-[#e4e4e7] to-[#d4d4d8] border border-[#ffffff] p-[5px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.8)] transform rotate-[-1.5deg] hover:rotate-0 hover:scale-[1.05] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-10 w-full ml-0 sm:w-[110%] sm:ml-[-5%] lg:w-[115%] lg:ml-[-10%]">
 
             {/* Inner Screen Surface */}
-            <div className="relative rounded-[1.8rem] overflow-hidden bg-black ring-1 ring-black/80 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] group aspect-[4/3] sm:aspect-video w-full flex flex-col justify-center">
+            <div 
+              className="relative rounded-[1.8rem] overflow-hidden bg-black ring-1 ring-black/80 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] group aspect-[4/3] sm:aspect-video w-full flex flex-col justify-center"
+              style={{ transform: 'translateZ(0)', borderRadius: '1.8rem', overflow: 'hidden', isolation: 'isolate' }}
+            >
 
               {/* Core Playable Surface */}
               <div 
-                className="relative w-full h-full flex items-center justify-center cursor-pointer overflow-hidden" 
+                className="relative w-full h-full flex items-center justify-center cursor-pointer overflow-hidden rounded-[1.8rem]" 
+                style={{ transform: 'translateZ(0)', borderRadius: '1.8rem', overflow: 'hidden' }}
                 onClick={() => setIsPlaying(!isPlaying)}
               >
                 {!isPlaying ? (
                   <>
                     <video 
                       src="https://res.cloudinary.com/dnbwf7xqd/video/upload/v1777530875/two_copbgr.mp4" 
-                      className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.03] origin-center"
+                      className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.03] origin-center rounded-[1.8rem]"
+                      style={{ borderRadius: '1.8rem' }}
                       autoPlay
                       muted
                       loop
                       playsInline
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60 rounded-[1.8rem]" />
 
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                       <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-2xl group-hover:bg-accent-600 group-hover:border-transparent group-hover:scale-110 transition-all duration-500 ease-out">
@@ -140,7 +145,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 ) : (
                   <iframe 
                     src="https://player.vimeo.com/video/1188341632?autoplay=1&title=0&byline=0&portrait=0" 
-                    className="w-full h-full absolute inset-0 z-20"
+                    className="w-full h-full absolute inset-0 z-20 rounded-[1.8rem]"
+                    style={{ borderRadius: '1.8rem' }}
                     allow="autoplay; fullscreen; picture-in-picture"
                   />
                 )}

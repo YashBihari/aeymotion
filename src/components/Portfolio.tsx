@@ -194,22 +194,32 @@ export default function Portfolio() {
         </button>
 
         {/* Premium Dribbble Vault Cross-Link Strip */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mt-2">
           <a 
             href="https://dribbble.com/aeymotion" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-brand-950/90 hover:bg-brand-900 border border-brand-800/80 hover:border-[#EA4C89]/60 text-xs font-bold tracking-wide text-brand-300 hover:text-white transition-all duration-300 group shadow-xl hover:shadow-[#EA4C89]/15 cursor-pointer backdrop-blur-md"
+            className="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-brand-950/40 hover:bg-brand-900/40 border border-brand-800/40 hover:border-[#EA4C89]/40 transition-all duration-500 ease-out cursor-pointer overflow-hidden backdrop-blur-md shadow-lg hover:shadow-[#EA4C89]/10"
           >
-            <span className="text-brand-400 font-mono text-[11px] uppercase tracking-wider">check out dribble platform:</span>
+            {/* Absolute soft interactive top border light */}
+            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[#EA4C89]/40 group-hover:via-[#EA4C89] to-transparent transition-all duration-500" />
+            
+            <span className="text-brand-400 group-hover:text-brand-300 font-mono text-[11px] uppercase tracking-wider transition-colors">
+              check out dribble platform:
+            </span>
+            
             {/* Real Solid Full-Color Dribbble Vector */}
-            <svg className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6 shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="#EA4C89" />
               <path stroke="white" strokeWidth="1.5" strokeLinecap="round" d="M5.5 8C8.5 8.5 12 8 14.5 5.5" fill="none" />
               <path stroke="white" strokeWidth="1.5" strokeLinecap="round" d="M3.5 13C7 12 11.5 12.5 15.5 16" fill="none" />
               <path stroke="white" strokeWidth="1.5" strokeLinecap="round" d="M11 21.5C13 18 16.5 13.5 21 11.5" fill="none" />
             </svg>
-            <span className="text-[#EA4C89] font-black underline group-hover:no-underline">Aeymotion Portfolio</span>
+            
+            <span className="text-[#EA4C89] font-black tracking-tight group-hover:translate-x-0.5 transition-transform duration-500 inline-flex items-center gap-1">
+              <span>Aeymotion Portfolio</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+            </span>
           </a>
         </div>
       </div>

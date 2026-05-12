@@ -102,17 +102,17 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto mt-8 flex flex-col sm:flex-row justify-between items-center gap-6 text-[10px] font-mono uppercase text-brand-500">
         <p>© {new Date().getFullYear()} Aeymotion Conversion Framework. Engineered Strictly For ROI.</p>
         
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-4 sm:mt-0">
-          {/* Gmail Expanding Badge */}
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-4 sm:mt-0">
+          {/* Gmail Bare Expanding Link */}
           <a 
             href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="w-10 h-10 rounded-full bg-brand-950 hover:bg-brand-900 border border-brand-800 hover:border-[#EA4335]/60 flex items-center justify-center hover:justify-start hover:w-auto hover:px-4 group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-xl hover:shadow-[#EA4335]/15 cursor-pointer overflow-hidden backdrop-blur-md"
+            className="flex items-center group transition-all duration-300 cursor-pointer"
             title="Email hello.aeymotion@gmail.com"
           >
-            {/* Real Solid Full-Color Gmail Vector */}
-            <svg className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Real Solid Full-Color Gmail Vector (Larger size, bare element) */}
+            <svg className="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.5 4H3.5C2.67 4 2 4.67 2 5.5V18.5C2 19.33 2.67 20 3.5 20H20.5C21.33 20 22 19.33 22 18.5V5.5C22 4.67 21.33 4 20.5 4Z" fill="#4285F4"/>
               <path d="M20.5 4H3.5C2.67 4 2 4.67 2 5.5V7.5L12 13.5L22 7.5V5.5C22 4.67 21.33 4 20.5 4Z" fill="#EA4335"/>
               <path d="M2 7.5V18.5C2 19.33 2.67 20 3.5 20H7V10.5L2 7.5Z" fill="#34A853"/>
@@ -123,18 +123,18 @@ export default function Footer({ onNavigate }: FooterProps) {
             </span>
           </a>
 
-          {/* Instagram Expanding Badge */}
+          {/* Instagram Bare Expanding Link */}
           <a 
             href="https://www.instagram.com/aey.motion/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="w-10 h-10 rounded-full bg-brand-950 hover:bg-brand-900 border border-brand-800 hover:border-[#E1306C]/60 flex items-center justify-center hover:justify-start hover:w-auto hover:px-4 group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-xl hover:shadow-[#E1306C]/15 cursor-pointer overflow-hidden backdrop-blur-md"
+            className="flex items-center group transition-all duration-300 cursor-pointer"
             title="Follow @aey.motion"
           >
-            {/* Real Full-Color Instagram Gradient Vector */}
-            <svg className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Real Full-Color Instagram Gradient Vector (Larger size, bare element) */}
+            <svg className="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="instaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <linearGradient id="instaGradBare" x1="0%" y1="100%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#FED576" />
                   <stop offset="25%" stopColor="#F47133" />
                   <stop offset="50%" stopColor="#BC3081" />
@@ -142,7 +142,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                   <stop offset="100%" stopColor="#4c63d2" />
                 </linearGradient>
               </defs>
-              <rect width="24" height="24" rx="6" fill="url(#instaGrad)" />
+              <rect width="24" height="24" rx="6" fill="url(#instaGradBare)" />
               <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="2" fill="none" />
               <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" strokeWidth="2" fill="none" />
               <circle cx="18" cy="6" r="1" fill="white" />
@@ -152,16 +152,16 @@ export default function Footer({ onNavigate }: FooterProps) {
             </span>
           </a>
 
-          {/* Dribbble Expanding Badge (Routes securely to brand email pipeline) */}
+          {/* Dribbble Bare Expanding Link (Routes securely to brand email pipeline) */}
           <a 
             href="https://mail.google.com/mail/?view=cm&fs=1&to=hello.aeymotion@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="w-10 h-10 rounded-full bg-brand-950 hover:bg-brand-900 border border-brand-800 hover:border-[#EA4C89]/60 flex items-center justify-center hover:justify-start hover:w-auto hover:px-4 group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-xl hover:shadow-[#EA4C89]/15 cursor-pointer overflow-hidden backdrop-blur-md"
+            className="flex items-center group transition-all duration-300 cursor-pointer"
             title="Request Dribbble Vault via hello.aeymotion@gmail.com"
           >
-            {/* Real Solid Full-Color Dribbble Vector */}
-            <svg className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Real Solid Full-Color Dribbble Vector (Larger size, bare element) */}
+            <svg className="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="#EA4C89" />
               <path stroke="white" strokeWidth="1.5" strokeLinecap="round" d="M5.5 8C8.5 8.5 12 8 14.5 5.5" fill="none" />
               <path stroke="white" strokeWidth="1.5" strokeLinecap="round" d="M3.5 13C7 12 11.5 12.5 15.5 16" fill="none" />

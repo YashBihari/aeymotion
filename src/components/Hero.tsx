@@ -1,103 +1,162 @@
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { ArrowRight, Play, TrendingUp, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-export default function Hero() {
+interface HeroProps {
+  onNavigate?: (screen: 'home' | 'pricing') => void;
+}
+
+export default function Hero({ onNavigate }: HeroProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handlePlay = () => {
-    setIsPlaying(true);
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play();
-      }
-    }, 0);
-  };
 
   return (
-    <section className="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Background soft glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-200/30 blur-[120px] rounded-full pointer-events-none -z-10" />
+    <section className="relative pt-32 pb-16 md:pt-44 md:pb-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+      {/* Immersive subtle ambient gradients */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-500/10 blur-[160px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-5 w-[350px] h-[350px] bg-purple-500/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-4xl">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="text-5xl md:text-[78px] font-bold tracking-[-0.05em] text-brand-950 leading-[0.95] mb-8 max-w-[700px] text-balance"
-        >
-          We help founders launch, grow and scale through premium motion.
-        </motion.h1>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Crisp Asymmetric Messaging Core */}
+        <div className="lg:col-span-7 max-w-2xl text-left">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              scale: [1, 1.015, 1],
+              textShadow: [
+                "0px 0px 0px rgba(59, 130, 246, 0)",
+                "0px 0px 30px rgba(59, 130, 246, 0.4)",
+                "0px 0px 0px rgba(59, 130, 246, 0)"
+              ]
+            }}
+            transition={{ 
+              opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
+              y: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
+              scale: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+              textShadow: { duration: 7, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-tight mb-6 origin-left"
+          >
+            Video & AI Systems <br />
+            <span className="text-gradient-accent">for SaaS, Tech & Web 3.0.</span>
+          </motion.h1>
+          {/* Rotating company showcase removed */}          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-sm sm:text-base text-brand-300 max-w-xl leading-relaxed mb-8"
+          >
+            We build full-funnel video infrastructures that transform complex tech into high-converting assets. From AI-driven interactive demos to authoritative brand films engineered to accelerate your pipeline.
+          </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="text-lg text-[#555] max-w-[400px] leading-relaxed mb-10 text-balance"
-        >
-          The secret weapon for SaaS & AI products that need to stand out, convert faster, and command higher prices.
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            className="flex flex-wrap items-center gap-3.5 mb-8"
+          >
+            {/* Primary Button */}
+            <button
+              onClick={() => {
+                onNavigate?.('pricing');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="px-6 py-4 bg-accent-600 hover:bg-accent-500 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all duration-300 shadow-xl shadow-accent-600/20 hover:shadow-accent-600/30 inline-flex items-center gap-2 group cursor-pointer"
+            >
+              <span>Get an Estimate</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
 
+            {/* Secondary Button */}
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="px-6 py-4 bg-brand-900/80 hover:bg-brand-900 text-brand-200 hover:text-white border border-brand-800 text-xs font-bold uppercase tracking-widest rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center gap-2 cursor-pointer"
+            >
+              <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+              <span>View Our Showreel</span>
+            </button>
+          </motion.div>
+
+          {/* Trust Bar Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="pt-6 border-t border-brand-900/80 max-w-lg"
+          >
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[11px] font-bold text-brand-400 tracking-wide">
+              <span className="flex items-center gap-1.5">
+                <strong className="text-white font-black text-xs">15+</strong> Reviews on Clutch
+              </span>
+              <span className="text-brand-800">•</span>
+              <span className="flex items-center gap-1.5">
+                <strong className="text-accent-400 font-mono font-black text-xs">20M+</strong> Views Generated
+              </span>
+              <span className="text-brand-800">•</span>
+              <span className="flex items-center gap-1.5">
+                <strong className="text-purple-400 font-mono font-black text-xs">100+</strong> Happy Tech Founders
+              </span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Premium iPad Pro Style Showcase Window */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-start gap-4"
+          initial={{ opacity: 0, scale: 0.95, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="lg:col-span-5 relative mt-8 lg:mt-0 lg:-ml-8"
         >
-          <a
-            href="#contact"
-            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-10 py-[15px] bg-black text-white text-xs font-bold uppercase tracking-widest transition-all hover:bg-[#333]"
-          >
-            Start Your Project
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
-             href="#work"
-             className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-10 py-[15px] bg-transparent text-black border border-black text-xs font-bold uppercase tracking-widest transition-all hover:bg-black hover:text-white"
-          >
-            Our Work
-          </a>
+          {/* Outer iPad Device Frame - Silver Finish */}
+          <div className="relative rounded-[2rem] bg-gradient-to-br from-[#f4f4f5] via-[#e4e4e7] to-[#d4d4d8] border border-[#ffffff] p-[5px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.8)] transform rotate-[-1.5deg] hover:rotate-0 hover:scale-[1.05] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-10 w-[120%] ml-[-10%] sm:w-[110%] sm:ml-[-5%] lg:w-[115%] lg:ml-[-10%]">
+
+            {/* Inner Screen Surface */}
+            <div className="relative rounded-[1.8rem] overflow-hidden bg-black ring-1 ring-black/80 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] group aspect-[4/3] sm:aspect-video w-full flex flex-col justify-center">
+
+              {/* Core Playable Surface */}
+              <div 
+                className="relative w-full h-full flex items-center justify-center cursor-pointer overflow-hidden" 
+                onClick={() => setIsPlaying(!isPlaying)}
+              >
+                {!isPlaying ? (
+                  <>
+                    <video 
+                      src="https://res.cloudinary.com/dnbwf7xqd/video/upload/v1777530875/two_copbgr.mp4" 
+                      className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.03] origin-center"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60" />
+
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                      <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-2xl group-hover:bg-accent-600 group-hover:border-transparent group-hover:scale-110 transition-all duration-500 ease-out">
+                        <Play className="w-6 h-6 sm:w-10 sm:h-10 fill-white translate-x-0.5 sm:translate-x-1 group-hover:drop-shadow-md transition-all" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <iframe 
+                    src="https://player.vimeo.com/video/1188341632?autoplay=1&title=0&byline=0&portrait=0" 
+                    className="w-full h-full absolute inset-0 z-20"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                  />
+                )}
+              </div>
+            </div>
+            
+            {/* Volume/Power Buttons simulation on edge (Silver) */}
+            <div className="absolute -left-1 top-24 w-1 h-12 bg-gradient-to-r from-[#d4d4d8] to-[#e4e4e7] rounded-l-md border-y border-l border-black/10 shadow-sm" />
+            <div className="absolute -left-1 top-40 w-1 h-12 bg-gradient-to-r from-[#d4d4d8] to-[#e4e4e7] rounded-l-md border-y border-l border-black/10 shadow-sm" />
+            <div className="absolute -top-1 right-20 w-12 h-1 bg-gradient-to-b from-[#d4d4d8] to-[#e4e4e7] rounded-t-md border-x border-t border-black/10 shadow-sm" />
+          </div>
+          
+          {/* Ambient device glow underneath */}
+          <div className="absolute inset-0 bg-accent-500/20 blur-[120px] -z-10 rounded-full transform scale-110 translate-y-10 mix-blend-screen" />
         </motion.div>
       </div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-        className="mt-20 md:mt-32 w-full h-[400px] md:h-[600px] bg-[#eee] rounded-none border border-black/10 overflow-hidden relative group cursor-pointer"
-        onClick={!isPlaying ? handlePlay : undefined}
-      >
-        {!isPlaying && (
-          <>
-            <video 
-               src="https://res.cloudinary.com/dnbwf7xqd/video/upload/v1777530875/two_copbgr.mp4" 
-               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-               autoPlay
-               muted
-               loop
-               playsInline
-            />
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-               <div className="w-20 h-20 bg-transparent backdrop-blur-sm text-white rounded-full flex items-center justify-center transition-colors font-black text-xs uppercase tracking-widest px-4 border border-white hover:bg-white hover:text-black">
-                  PLAY
-               </div>
-            </div>
-          </>
-        )}
-
-        {isPlaying && (
-          <iframe 
-            src="https://player.vimeo.com/video/1188341632?autoplay=1&title=0&byline=0&portrait=0"
-            className="w-full h-full scale-[1.35] md:scale-[1.45]"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
-        )}
-      </motion.div>
     </section>
   );
 }

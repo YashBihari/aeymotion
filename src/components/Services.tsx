@@ -1,107 +1,128 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Box, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, TrendingUp, UserCheck, Coins, Sparkles, Layers } from 'lucide-react';
 
-const services = [
+const pathways = [
   {
-    icon: <Box className="w-6 h-6" />,
-    title: "Startup Launch Essentials",
-    description: "Turn your product into a clear, easy-to-understand visual for strong first impressions.",
-    features: [
-      "45 to 60s Explainer Video",
-      "Clean, modern motion",
-      "Unlimited revision",
-      "Delivery 5 to 7 days"
-    ],
-    price: "Starting from $699"
+    icon: <TrendingUp className="w-6 h-6 text-accent-400" />,
+    solution: "Accelerate Sales",
+    subtitle: "High-Converting Visual Demos",
+    description: "Stop relying on dense documentation. We create stunning, cinematic video narratives that instantly show prospects exactly how your software solves their most expensive problems.",
+    outcome: "Shorten sales cycles & increase demo win rates.",
+    badge: "Pipeline Growth",
+    color: "from-accent-500/10 to-transparent",
+    borderGlow: "group-hover:via-accent-500"
   },
   {
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: "Growth & Campaign Motion",
-    description: "Startups actively scaling marketing, ads, and audience engagement",
-    features: [
-      "1x Explainer or Product Video",
-      "3 to 5 short form vertical video",
-      "Platform optimized formats",
-      "Delivery: 2 to 3 week"
-    ],
-    price: "Starting from $1499"
+    icon: <UserCheck className="w-6 h-6 text-emerald-400" />,
+    solution: "Boost Retention",
+    subtitle: "Frictionless Onboarding",
+    description: "Keep new users engaged from day one. Our immersive product visualizations intuitively guide users, entirely eliminating the frustration of learning a complex new interface.",
+    outcome: "Reduce trial drop-offs & platform churn.",
+    badge: "User Engagement",
+    color: "from-emerald-500/10 to-transparent",
+    borderGlow: "group-hover:via-emerald-500"
   },
   {
-    icon: <Sparkles className="w-6 h-6" />,
-    title: "Premium Product Experience",
-    description: "Craft cinematic, high-end visuals that position your brand as premium and memorable.",
-    features: [
-      "Cinematic product video / brand film",
-      "Extended 90 second narrative",
-      "45s growth focused video",
-      "5 to 10 social media cuts",
-      "Priority support & delivery",
-      "Delivery: 3–5 weeks"
-    ],
-    price: "Starting from $2999"
+    icon: <Coins className="w-6 h-6 text-amber-400" />,
+    solution: "Drive Conviction",
+    subtitle: "Institutional Validation",
+    description: "Build immediate trust with enterprise decision-makers. High-fidelity motion graphics visually position your product as the undeniable, premium standard in your industry.",
+    outcome: "Secure enterprise buy-in & justify premium pricing.",
+    badge: "Brand Authority",
+    color: "from-amber-500/10 to-transparent",
+    borderGlow: "group-hover:via-amber-500"
   }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="mb-12">
+    <section id="services" className="py-24 md:py-36 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+      {/* Immersive background aura highlights */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      {/* Redesigned Clean Header */}
+      <div className="text-center max-w-4xl mx-auto mb-20 md:mb-28">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[40px] md:text-[56px] leading-[0.95] font-bold tracking-tight mb-6 max-w-[580px]"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight"
         >
-          Specialized motion packages.
+          Turn complex software into <br className="hidden sm:block" />
+          <span className="text-gradient-accent">undeniable visual proof.</span>
         </motion.h2>
+        
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="text-lg text-[#555] max-w-[400px] leading-relaxed"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-base sm:text-lg text-brand-300 max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          No bloated scope entries. Just precise, high-impact motion offerings designed strictly for modern tech companies.
+          We translate dense technical architecture into frictionless, cinematic experiences that your customers instantly understand, trust, and buy.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[15px]">
-        {services.map((service, i) => (
+      {/* Clean & Attractive Pathways Array */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
+        {pathways.map((path, idx) => (
           <motion.div
-            key={i}
+            key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-            className="group relative p-5 border border-black/10 rounded-sm hover:bg-black hover:border-black hover:text-white transition-colors duration-300 flex flex-col justify-center"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: idx * 0.15 }}
+            className="glass-panel rounded-3xl p-8 sm:p-10 relative group border border-brand-800/60 hover:border-brand-700 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-500/10 hover:bg-brand-900/40"
           >
-            <h3 className="text-sm uppercase tracking-[0.05em] font-bold mb-2">{service.title}</h3>
-            <p className="text-xs opacity-70 mb-6">{service.description}</p>
-            
-            <ul className="space-y-2 mb-6">
-              {service.features.map((feat, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-xs opacity-80">
-                  <div className="w-1 h-1 rounded-full bg-current flex-shrink-0" />
-                  {feat}
-                </li>
-              ))}
-            </ul>
+            {/* Absolute ambient ceiling light */}
+            <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-b ${path.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
 
-            <div className="mt-auto flex flex-col gap-4">
-              {service.price && (
-                <div className="text-sm font-semibold tracking-wide border-t border-current/20 pt-4">
-                  {service.price}
+            <div className="relative z-10 flex flex-col h-full">
+              {/* Premium Icon Container */}
+              <div className="p-4 bg-brand-950/80 rounded-2xl w-fit mb-8 border border-white/5 shadow-md group-hover:scale-110 group-hover:border-white/10 transition-all duration-500">
+                {path.icon}
+              </div>
+
+              <div>
+                <span className="text-[10px] font-black text-brand-400 uppercase tracking-widest mb-2 block font-mono">
+                  {path.subtitle}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4 group-hover:text-accent-300 transition-colors">
+                  {path.solution}
+                </h3>
+                
+                <p className="text-sm text-brand-300 leading-relaxed mb-8 font-medium">
+                  {path.description}
+                </p>
+              </div>
+
+              <div className="mt-auto border-t border-brand-900/60 pt-6">
+                <div className="flex items-start gap-3 mb-6">
+                  <div className="mt-1 shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-500" />
+                  </div>
+                  <p className="text-[13px] font-bold text-brand-200">
+                    {path.outcome}
+                  </p>
                 </div>
-              )}
-              <a href="#contact" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest group-hover:text-white">
-                Learn more
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+
+                <a 
+                  href="#pricing" 
+                  className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-brand-400 group-hover:text-white transition-colors group/btn cursor-pointer"
+                >
+                  <span>Start Your Project</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                </a>
+              </div>
             </div>
+
+            {/* Dynamic ultra border spark base line */}
+            <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-transparent to-transparent ${path.borderGlow} transition-all duration-700 opacity-50 group-hover:opacity-100`} />
           </motion.div>
         ))}
       </div>
     </section>
   );
 }
+

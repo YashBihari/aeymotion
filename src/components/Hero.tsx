@@ -109,7 +109,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           className="lg:col-span-5 relative mt-8 lg:mt-0 lg:-ml-8"
         >
           {/* Outer iPad Device Frame - Silver Finish */}
-          <div className="relative rounded-[2rem] bg-gradient-to-br from-[#f4f4f5] via-[#e4e4e7] to-[#d4d4d8] border border-[#ffffff] p-[5px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.8)] transform rotate-[-1.5deg] hover:rotate-0 hover:scale-[1.05] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-10 w-[120%] ml-[-10%] sm:w-[110%] sm:ml-[-5%] lg:w-[115%] lg:ml-[-10%]">
+          <div className="relative rounded-[2rem] bg-gradient-to-br from-[#f4f4f5] via-[#e4e4e7] to-[#d4d4d8] border border-[#ffffff] p-[5px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.8)] transform rotate-[-1.5deg] hover:rotate-0 hover:scale-[1.05] transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-10 w-full ml-0 sm:w-[110%] sm:ml-[-5%] lg:w-[115%] lg:ml-[-10%]">
 
             {/* Inner Screen Surface */}
             <div className="relative rounded-[1.8rem] overflow-hidden bg-black ring-1 ring-black/80 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] group aspect-[4/3] sm:aspect-video w-full flex flex-col justify-center">

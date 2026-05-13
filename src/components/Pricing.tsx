@@ -371,15 +371,6 @@ export default function Pricing({ onNavigate }: PricingProps) {
 
       {/* Header section */}
       <div className="text-center max-w-3xl mx-auto mb-16 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-[11px] font-bold uppercase tracking-widest mb-4"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          Enterprise Choice Architecture
-        </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

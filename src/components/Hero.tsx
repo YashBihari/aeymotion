@@ -36,10 +36,9 @@ export default function Hero({ onNavigate }: HeroProps) {
               scale: { duration: 7, repeat: Infinity, ease: "easeInOut" },
               textShadow: { duration: 7, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-tight mb-6 origin-left"
+            className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6 origin-left text-balance"
           >
-            Video & AI Systems <br />
-            <span className="text-gradient-accent">for SaaS, Tech & Web 3.0.</span>
+            We help AI & SaaS founders launch, grow, and scale with <span className="text-gradient-accent">high-converting motion content.</span>
           </motion.h1>
           {/* Rotating company showcase removed */}          <motion.p
             initial={{ opacity: 0, y: 20 }}

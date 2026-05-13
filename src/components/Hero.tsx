@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Play, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, TrendingUp, Sparkles, Volume2, VolumeX, Maximize } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface HeroProps {
@@ -8,6 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onNavigate }: HeroProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   return (
     <section className="relative pt-32 pb-16 md:pt-44 md:pb-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
@@ -145,6 +146,42 @@ export default function Hero({ onNavigate }: HeroProps) {
                       playsInline
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500 rounded-[1.8rem] pointer-events-none" />
+
+                    {/* Floating Overlay Volume and Maximize Controls */}
+                    <div className="absolute bottom-4 right-4 z-30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const vid = e.currentTarget.closest('.group')?.querySelector('video');
+                          if (vid) {
+                            vid.muted = !vid.muted;
+                            setIsMuted(vid.muted);
+                          }
+                        }}
+                        className="w-9 h-9 rounded-full bg-brand-950/80 hover:bg-brand-900 text-white flex items-center justify-center backdrop-blur-md border border-brand-800/80 transition-all shadow-xl hover:scale-110 cursor-pointer"
+                        title={isMuted ? "Unmute Audio" : "Mute Audio"}
+                      >
+                        {isMuted ? <VolumeX className="w-4 h-4 text-brand-400" /> : <Volume2 className="w-4 h-4 text-accent-400" />}
+                      </button>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const vid = e.currentTarget.closest('.group')?.querySelector('video');
+                          if (vid) {
+                            if (vid.requestFullscreen) {
+                              vid.requestFullscreen();
+                            } else if ((vid as any).webkitRequestFullscreen) {
+                              (vid as any).webkitRequestFullscreen();
+                            }
+                          }
+                        }}
+                        className="w-9 h-9 rounded-full bg-brand-950/80 hover:bg-brand-900 text-white flex items-center justify-center backdrop-blur-md border border-brand-800/80 transition-all shadow-xl hover:scale-110 cursor-pointer"
+                        title="View Fullscreen"
+                      >
+                        <Maximize className="w-4 h-4 text-brand-300" />
+                      </button>
+                    </div>
                   </>
                 ) : (
                   <iframe 

@@ -120,14 +120,17 @@ export default function Hero({ onNavigate }: HeroProps) {
               <div 
                 className="relative w-full h-full flex items-center justify-center cursor-pointer overflow-hidden rounded-[1.8rem]" 
                 style={{ transform: 'translateZ(0)', borderRadius: '1.8rem', overflow: 'hidden' }}
-                onClick={() => setIsPlaying(!isPlaying)}
-                onMouseEnter={(e) => {
-                  const vid = e.currentTarget.querySelector('video');
-                  if (vid) vid.play().catch(() => {});
-                }}
-                onMouseLeave={(e) => {
-                  const vid = e.currentTarget.querySelector('video');
-                  if (vid) vid.pause();
+                onClick={(e) => {
+                  if (!isPlaying) {
+                    const vid = e.currentTarget.querySelector('video');
+                    if (vid) {
+                      if (vid.paused) {
+                        vid.play().catch(() => {});
+                      } else {
+                        vid.pause();
+                      }
+                    }
+                  }
                 }}
               >
                 {!isPlaying ? (
@@ -136,11 +139,12 @@ export default function Hero({ onNavigate }: HeroProps) {
                       src="https://res.cloudinary.com/dnbwf7xqd/video/upload/v1777530875/two_copbgr.mp4" 
                       className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.03] origin-center rounded-[1.8rem]"
                       style={{ borderRadius: '1.8rem' }}
+                      autoPlay
                       muted
                       loop
                       playsInline
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500 rounded-[1.8rem]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500 rounded-[1.8rem] pointer-events-none" />
                   </>
                 ) : (
                   <iframe 

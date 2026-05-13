@@ -61,26 +61,28 @@ export default function Testimonials() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: idx * 0.1 }}
             className="relative rounded-[2rem] overflow-hidden group border border-white/5 hover:border-accent-500/30 transition-all duration-700 shadow-2xl hover:shadow-accent-500/10 cursor-pointer"
+            onMouseEnter={(e) => {
+              const vid = e.currentTarget.querySelector('video');
+              if (vid) vid.play().catch(() => {});
+            }}
+            onMouseLeave={(e) => {
+              const vid = e.currentTarget.querySelector('video');
+              if (vid) vid.pause();
+            }}
           >
             {/* Immersive Video Background */}
             <div className="aspect-[4/5] sm:aspect-square w-full bg-brand-950 overflow-hidden relative">
               <video 
                 src={card.video}
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                autoPlay
                 muted
                 loop
                 playsInline
               />
               
               {/* Cinematic Shadow Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/60 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/60 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#09090b]/40 to-transparent opacity-50" />
-              
-              {/* Aesthetic Playback icon badge */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/10 backdrop-blur-md text-white flex items-center justify-center shadow-2xl border border-white/20 group-hover:bg-accent-600 group-hover:scale-110 group-hover:border-transparent transition-all duration-500 ease-out z-10">
-                <Play className="w-6 h-6 fill-white translate-x-0.5" />
-              </div>
 
               {/* Testimonial Quote Footer (Overlaid) */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex flex-col justify-end z-20 pointer-events-none">

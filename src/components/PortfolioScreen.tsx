@@ -179,12 +179,19 @@ export default function PortfolioScreen({ onNavigate }: PortfolioScreenProps) {
                 setModalVideo({ url: project.url, title: project.title });
               }
             }}
+            onMouseEnter={(e) => {
+              const vid = e.currentTarget.querySelector('video');
+              if (vid) vid.play().catch(() => {});
+            }}
+            onMouseLeave={(e) => {
+              const vid = e.currentTarget.querySelector('video');
+              if (vid) vid.pause();
+            }}
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-brand-900 border border-brand-800/50 shadow-2xl">
               {project.isVideoThumb ? (
                 <video
                   src={project.thumb}
-                  autoPlay
                   muted
                   loop
                   playsInline
@@ -198,17 +205,7 @@ export default function PortfolioScreen({ onNavigate }: PortfolioScreenProps) {
                 />
               )}
               
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
-              
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 z-20">
-                <div className="w-16 h-16 rounded-full bg-accent-600/90 backdrop-blur-sm flex items-center justify-center text-white shadow-2xl shadow-accent-600/50">
-                  {project.isExternal ? (
-                    <ArrowUpRight className="w-6 h-6 ml-1 text-white" />
-                  ) : (
-                    <Play className="w-6 h-6 ml-1 fill-white" />
-                  )}
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
 
               {/* Text overlays */}
               <div className="absolute bottom-0 left-0 right-0 p-6 z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">

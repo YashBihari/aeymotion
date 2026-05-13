@@ -136,27 +136,27 @@ export default function Portfolio() {
             <div 
               className="relative aspect-video w-full bg-brand-950 overflow-hidden cursor-pointer"
               onClick={() => setModalVideo({ client: study.client, url: study.videoUrl, title: study.title, roi: study.roi })}
+              onMouseEnter={(e) => {
+                const vid = e.currentTarget.querySelector('video');
+                if (vid) vid.play().catch(() => {});
+              }}
+              onMouseLeave={(e) => {
+                const vid = e.currentTarget.querySelector('video');
+                if (vid) vid.pause();
+              }}
             >
               <video 
                 src={study.thumb} 
-                className="w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
-                autoPlay
+                className="w-full h-full object-cover opacity-85 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
                 muted
                 loop
                 playsInline
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
               
               {/* Category indicator pill */}
               <div className="absolute top-3 left-3 bg-brand-950/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-brand-800/60 text-[9px] font-mono font-bold text-accent-400 uppercase tracking-wider z-10">
                 {study.category}
-              </div>
-
-              {/* Prominent Play Icon hovering center triggering Modal window */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <div className="w-12 h-12 rounded-full bg-accent-600 text-white flex items-center justify-center shadow-lg shadow-accent-600/30 group-hover:scale-110 transition-transform">
-                  <Play className="w-4 h-4 fill-white translate-x-0.5" />
-                </div>
               </div>
             </div>
 

@@ -3,41 +3,41 @@ import { ArrowUpRight, ShieldAlert } from 'lucide-react';
 
 const trustMetrics = [
   {
-    company: "FintechX Invoicing",
-    outcome: "+22% Conversion",
-    context: "SaaS Onboarding Flow Overhaul",
+    company: "AI Video Explainer",
+    outcome: "2.1x Time-on-Site",
+    context: "Replaced static images with kinetic UI logic flows.",
     gradient: "from-blue-400 to-indigo-500",
-    pill: "ARR Velocity"
+    pill: "Retention Vector"
   },
   {
-    company: "NeuroScale AI",
-    outcome: "$5M Series A Locked",
-    context: "Pre-Seed Visual Architecture",
+    company: "Enterprise DevTools",
+    outcome: "Deal Cycle Halved",
+    context: "Linear motion maps targeting executive stakeholders.",
     gradient: "from-accent-400 to-purple-500",
-    pill: "Stakeholder Trust"
+    pill: "Sales Velocity"
   },
   {
-    company: "CloudSync ERP",
-    outcome: "32% Churn Reduction",
-    context: "Tactile Motion Logic Loops",
+    company: "Generative AI Platform",
+    outcome: "< 5s Product Grasp",
+    context: "Bypassed technical text walls with live kinetic output proof.",
     gradient: "from-emerald-400 to-teal-500",
-    pill: "Friction Bypass"
+    pill: "Cognitive Capture"
   },
   {
-    company: "DataStream Matrix",
-    outcome: "4.2x Demo Velocity",
-    context: "Pre-Verbal Explainer Sequence",
+    company: "Fast-Scaling SaaS App",
+    outcome: "Consistent CAC Scale",
+    context: "Deployed continuous asymmetric ad creative testing iterations.",
     gradient: "from-amber-400 to-orange-500",
-    pill: "Ingestion Rate"
+    pill: "Acquisition Scale"
   }
 ];
 
 export default function Clients() {
   const tickerLogos = [
-    "STEALTH AI", "VEGACODES", "TECHZEIN", "AURA", 
-    "DRIVERONHIRE", "VACATIONBNA",
-    "STEALTH AI", "VEGACODES", "TECHZEIN", "AURA", 
-    "DRIVERONHIRE", "VACATIONBNA"
+    "Y-COMBINATOR BACKED", "SERIES-A ENTERPRISE", "FINTECH ECOSYSTEMS", "PRODUCT HUNT LEADERS", 
+    "DEVTOOLS & APIS", "GENERATIVE AI SUITES",
+    "Y-COMBINATOR BACKED", "SERIES-A ENTERPRISE", "FINTECH ECOSYSTEMS", "PRODUCT HUNT LEADERS", 
+    "DEVTOOLS & APIS", "GENERATIVE AI SUITES"
   ];
 
   return (

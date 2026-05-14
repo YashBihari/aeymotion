@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { CheckCircle2, HelpCircle, ArrowRight, ArrowLeft, Zap, Sparkles, Flame, Clock } from 'lucide-react';
+import { CheckCircle2, HelpCircle, ArrowRight, ArrowLeft, Zap, Sparkles, Flame, Clock, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const packages = [
@@ -17,7 +17,9 @@ const packages = [
     ],
     cta: "Initiate Essential Suite",
     popular: false,
-    delay: 0.1
+    delay: 0.1,
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   },
   {
     tier: "Tier 2: The Professional",
@@ -34,7 +36,9 @@ const packages = [
     ],
     cta: "Deploy Growth Suite",
     popular: true, // 🔥 Most Popular highlighted
-    delay: 0.2
+    delay: 0.2,
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   },
   {
     tier: "Tier 3: The Elite",
@@ -51,7 +55,9 @@ const packages = [
     ],
     cta: "Secure Elite Partnership",
     popular: false,
-    delay: 0.3
+    delay: 0.3,
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   }
 ];
 
@@ -71,7 +77,9 @@ const standaloneSprints = [
     ],
     importantLine: "Most startups lose attention because the messaging isn’t clear enough.",
     trustBuilders: "Delivered within 72h • Async workflow • No long-term contracts",
-    extra: "Built to help cold users understand your product faster."
+    extra: "Built to help cold users understand your product faster.",
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   },
   {
     type: "Creative Testing Sprint",
@@ -88,7 +96,9 @@ const standaloneSprints = [
     ],
     importantLine: "Creative fatigue kills growth faster than most founders realize.",
     trustBuilders: "Rapid iteration • Meta/TikTok/X optimized • Built for fast-moving teams",
-    extra: "Designed for startups that need faster creative testing."
+    extra: "Designed for startups that need faster creative testing.",
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   },
   {
     type: "Founder Authority Sprint",
@@ -105,7 +115,9 @@ const standaloneSprints = [
     ],
     importantLine: "Built for founders who want visibility without becoming full-time creators.",
     trustBuilders: "Founder-focused system • Async workflow • Fast delivery",
-    extra: "Convert your raw thoughts into polished authority."
+    extra: "Convert your raw thoughts into polished authority.",
+    // 💳 PASTE YOUR STRIPE / RAZORPAY INSTANT PAYMENT LINK HERE
+    paymentUrl: ""
   }
 ];
 
@@ -285,9 +297,16 @@ interface PricingProps {
 }
 
 export default function Pricing({ onNavigate }: PricingProps) {
-  const [activeMode, setActiveMode] = useState<'packages' | 'sprints' | 'types'>('packages');
+  const [activeMode, setActiveMode] = useState<'packages' | 'sprints' | 'types' | 'consulting'>('packages');
   const [selectedType, setSelectedType] = useState('Explainer video');
   const [selectedDuration, setSelectedDuration] = useState('60s');
+  const [showConsultingCheckout, setShowConsultingCheckout] = useState(false);
+
+  // 💰 INSTANT PAYOUT CONFIGURATION FOR $30 AI CONSULTING
+  // 1. Enter your UPI ID to receive direct-to-bank settlement in 0 seconds (India):
+  const PAYOUT_UPI_ID = "9098635119@slc";
+  // 2. Or paste your Stripe / Razorpay direct $30 payment link:
+  const consultingPaymentUrl = "";
 
   // Asynchronous continuous sprint pipeline models
 
@@ -403,6 +422,22 @@ export default function Pricing({ onNavigate }: PricingProps) {
             <Zap className={`w-3.5 h-3.5 ${activeMode === 'types' ? 'text-amber-300 fill-amber-300' : 'text-purple-400'}`} />
             <span>🎛️ Video Pricing by Types</span>
           </button>
+          <button
+            onClick={() => {
+              setActiveMode('consulting');
+              if (window.location.hash === '#sprints') {
+                window.history.replaceState(null, '', window.location.pathname);
+              }
+            }}
+            className={`relative px-5 sm:px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer ${
+              activeMode === 'consulting' 
+                ? 'text-white bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg shadow-emerald-600/20' 
+                : 'text-brand-400 hover:text-brand-100 hover:bg-brand-900/40'
+            }`}
+          >
+            <span className="text-base">🧠</span>
+            <span>AI Strategy Consultation</span>
+          </button>
         </div>
       </div>
 
@@ -480,8 +515,16 @@ export default function Pricing({ onNavigate }: PricingProps) {
 
               <div className="mt-auto pt-6">
                 <a
-                  href="#contact"
-                  onClick={handleContactRedirect}
+                  href={pkg.paymentUrl || "#contact"}
+                  onClick={(e) => {
+                    if (pkg.paymentUrl) {
+                      // Let native link routing handle the direct payment window
+                      return;
+                    }
+                    handleContactRedirect(e);
+                  }}
+                  target={pkg.paymentUrl ? "_blank" : undefined}
+                  rel={pkg.paymentUrl ? "noopener noreferrer" : undefined}
                   className={`w-full py-4 rounded-xl text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer ${
                     pkg.popular
                       ? 'bg-accent-600 hover:bg-accent-500 text-white shadow-xl shadow-accent-600/20 hover:shadow-accent-600/30'
@@ -587,8 +630,15 @@ export default function Pricing({ onNavigate }: PricingProps) {
                     </div>
                   </div>
                   <a
-                    href="#contact"
-                    onClick={handleContactRedirect}
+                    href={sprint.paymentUrl || "#contact"}
+                    onClick={(e) => {
+                      if (sprint.paymentUrl) {
+                        return;
+                      }
+                      handleContactRedirect(e);
+                    }}
+                    target={sprint.paymentUrl ? "_blank" : undefined}
+                    rel={sprint.paymentUrl ? "noopener noreferrer" : undefined}
                     className="w-full py-4 bg-white text-brand-950 hover:bg-brand-200 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-xl inline-flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>⚡ Book Sprint</span>
@@ -756,6 +806,165 @@ export default function Pricing({ onNavigate }: PricingProps) {
             </div>
           </div>
         </motion.div>
+      )}
+
+      {/* Mode 4: Standalone 1 Hour AI Consultant Service Layout */}
+      {activeMode === 'consulting' && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 border border-brand-800/90 shadow-2xl relative z-20 overflow-hidden"
+        >
+          {/* Subtle top edge accent stripe */}
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-transparent" />
+          
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-brand-800/80">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-black uppercase tracking-widest text-emerald-400 mb-3">
+                1-on-1 Strategic Consulting
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight mb-2">
+                1 Hour AI Strategy & Video Funnel Review
+              </h3>
+              <p className="text-xs sm:text-sm text-brand-300 font-medium max-w-xl">
+                Get a deep-dive, actionable live consultation with our AI production architects to systematically evaluate your landing page messaging, optimize your video scripts, and eliminate friction across your sales flows.
+              </p>
+            </div>
+
+            <div className="shrink-0 p-5 rounded-2xl bg-brand-950/80 border border-brand-800/60 shadow-inner text-center w-full md:w-auto">
+              <span className="text-[10px] font-bold text-brand-400 uppercase tracking-widest block mb-1">Fixed Rate</span>
+              <span className="text-4xl font-black text-white font-mono tracking-tight">$30</span>
+              <span className="text-[9px] text-emerald-400 uppercase tracking-wider font-extrabold block mt-1">60-Minute Session</span>
+            </div>
+          </div>
+
+          <div className="py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div className="text-[10px] font-black uppercase text-brand-400 tracking-widest mb-2">Session Inclusions</div>
+              <div className="flex items-start gap-2.5 text-xs text-brand-300 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Full audit of your software's user journey and demo gaps</span>
+              </div>
+              <div className="flex items-start gap-2.5 text-xs text-brand-300 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Live copywriting feedback for your hooks and subheaders</span>
+              </div>
+              <div className="flex items-start gap-2.5 text-xs text-brand-300 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Actionable optimization roadmap delivered right after call</span>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="text-[10px] font-black uppercase text-brand-400 tracking-widest mb-2">Instant Payout Setup</div>
+              <p className="text-xs text-brand-400 leading-relaxed font-medium">
+                Secure your 60-minute interactive calendar slot instantly. All consulting fees route directly to our connected settlement system immediately upon confirmation.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => setShowConsultingCheckout(true)}
+                  className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-black uppercase tracking-widest transition-all shadow-xl inline-flex items-center justify-center gap-2 group cursor-pointer border-none"
+                >
+                  <span>⚡ Secure & Pay $30</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Premium Instant Payout Checkout Modal */}
+      {showConsultingCheckout && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-950/90 backdrop-blur-xl animate-fade-in">
+          <div className="w-full max-w-lg glass-panel rounded-3xl overflow-hidden border border-brand-800/80 shadow-2xl relative flex flex-col bg-brand-950 text-left">
+            {/* Elegant Header banner */}
+            <div className="relative p-6 pb-4 bg-gradient-to-r from-emerald-950 via-brand-950 to-brand-950 border-b border-brand-800/60 flex items-center justify-between">
+              <div>
+                <span className="text-[9px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Instant Direct Settlement</span>
+                <h4 className="text-lg font-black text-white tracking-tight">AI Consulting Checkout</h4>
+              </div>
+              <button
+                onClick={() => setShowConsultingCheckout(false)}
+                className="p-1.5 rounded-full bg-brand-900/60 hover:bg-brand-800 text-brand-400 hover:text-white transition-colors cursor-pointer border border-brand-700/50"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-6">
+              {/* Option A: Direct Instant UPI transfer */}
+              <div className="p-5 rounded-2xl bg-brand-900/30 border border-emerald-500/30 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500" />
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Instant UPI Transfer (India)
+                  </span>
+                  <span className="text-[10px] bg-emerald-500/10 text-emerald-400 font-mono font-bold px-2 py-0.5 rounded border border-emerald-500/20">
+                    0s Settlement
+                  </span>
+                </div>
+                <p className="text-[11px] text-brand-300 leading-relaxed mb-4">
+                  Pay instantly via Google Pay, PhonePe, or Paytm. Funds credit directly into your bank account immediately.
+                </p>
+                
+                {/* Dynamically Styled live QR code graphic */}
+                <div className="bg-white p-2 rounded-xl w-44 h-44 mx-auto mb-3 flex flex-col items-center justify-center border-2 border-emerald-500/40 relative shadow-inner overflow-hidden">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(`upi://pay?pa=${PAYOUT_UPI_ID}&pn=Aeymotion&am=2500&cu=INR`)}`}
+                    alt="Scan with Google Pay, PhonePe, or Paytm"
+                    className="w-full h-full object-contain"
+                  />
+                  {/* Four small corner scanner brackets */}
+                  <div className="absolute top-1.5 left-1.5 w-3 h-3 border-t-2 border-l-2 border-emerald-600" />
+                  <div className="absolute top-1.5 right-1.5 w-3 h-3 border-t-2 border-r-2 border-emerald-600" />
+                  <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b-2 border-l-2 border-emerald-600" />
+                  <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b-2 border-r-2 border-emerald-600" />
+                </div>
+
+                <div className="text-center">
+                  <span className="text-[10px] text-brand-400 font-mono select-all bg-brand-950 px-2.5 py-1 rounded border border-brand-800 inline-block">
+                    {PAYOUT_UPI_ID}
+                  </span>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-brand-800/40 text-center">
+                  <a
+                    href={`upi://pay?pa=${PAYOUT_UPI_ID}&pn=Aeymotion&am=2500&cu=INR`}
+                    className="text-[11px] font-black uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Tap to Open UPI App</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Option B: Card Global checkout */}
+              <div className="p-4 rounded-xl bg-brand-950/60 border border-brand-800/80 text-center">
+                <span className="text-[10px] font-bold text-brand-400 uppercase tracking-wider block mb-2">International / Card Checkout</span>
+                <a
+                  href={consultingPaymentUrl || "#contact"}
+                  onClick={(e) => {
+                    if (consultingPaymentUrl) return;
+                    e.preventDefault();
+                    setShowConsultingCheckout(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('contact');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  target={consultingPaymentUrl ? "_blank" : undefined}
+                  rel={consultingPaymentUrl ? "noopener noreferrer" : undefined}
+                  className="w-full py-3 bg-brand-900 hover:bg-brand-800 text-white rounded-lg text-[11px] font-bold uppercase tracking-widest transition-all block border border-brand-700/60"
+                >
+                  {consultingPaymentUrl ? "Pay $30 via Global Gateway ↗" : "Request Manual Invoice"}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </section>
   );

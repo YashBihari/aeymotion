@@ -42,7 +42,7 @@ export default function CTA({ onNavigate }: CTAProps) {
             href="#contact"
             className="px-8 py-5 bg-accent-600 hover:bg-accent-500 text-white text-sm font-black uppercase tracking-widest rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] inline-flex items-center justify-center gap-3 group/btn"
           >
-            <span>Start Your Project</span>
+            <span>Book Strategy Call</span>
             <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1.5 transition-transform" />
           </a>
           

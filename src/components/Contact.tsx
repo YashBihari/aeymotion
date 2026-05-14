@@ -188,7 +188,7 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className={`w-full py-5 rounded-2xl bg-accent-600 hover:bg-accent-500 text-white font-black text-sm uppercase tracking-widest transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_40px_rgba(37,99,235,0.5)] flex items-center justify-center gap-3 cursor-pointer group/submit ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
                 >
-                  <span>{isSubmitting ? "Sending..." : "Start Your Project"}</span>
+                  <span>{isSubmitting ? "Sending..." : "Book Strategy Call"}</span>
                   {!isSubmitting && <ArrowRight className="w-5 h-5 group-hover/submit:translate-x-1.5 transition-transform" />}
                 </button>
               </div>

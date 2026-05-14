@@ -3,7 +3,7 @@ import { ArrowRight, Play, TrendingUp, Sparkles, Volume2, VolumeX, Maximize } fr
 import { useState, useEffect } from 'react';
 
 interface HeroProps {
-  onNavigate?: (screen: 'home' | 'pricing') => void;
+  onNavigate?: (screen: 'home' | 'pricing' | 'services' | 'portfolio') => void;
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
@@ -45,9 +45,9 @@ export default function Hero({ onNavigate }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-sm sm:text-base text-brand-300 max-w-xl leading-relaxed mb-8"
+            className="text-sm sm:text-base text-brand-300 max-w-xl leading-relaxed mb-8 text-balance"
           >
-            We build full-funnel video infrastructures that transform complex tech into high-converting assets. From AI-driven interactive demos to authoritative brand films engineered to accelerate your pipeline.
+            We turn AI & SaaS products into visual experiences customers instantly understand, trust, and buy into.
           </motion.p>
 
           <motion.div
@@ -59,22 +59,32 @@ export default function Hero({ onNavigate }: HeroProps) {
             {/* Primary Button */}
             <button
               onClick={() => {
-                onNavigate?.('pricing');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                onNavigate?.('home');
+                const el = document.getElementById('contact');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                  setTimeout(() => {
+                    const input = document.getElementById('contact-name-input') as HTMLInputElement;
+                    if (input) input.focus();
+                  }, 500);
+                }
               }}
               className="px-6 py-4 bg-accent-600 hover:bg-accent-500 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all duration-300 shadow-xl shadow-accent-600/20 hover:shadow-accent-600/30 inline-flex items-center gap-2 group cursor-pointer"
             >
-              <span>Get an Estimate</span>
+              <span>Book Strategy Call</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Secondary Button */}
             <button
-              onClick={() => setIsPlaying(true)}
+              onClick={() => {
+                onNavigate?.('portfolio');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="px-6 py-4 bg-brand-900/80 hover:bg-brand-900 text-brand-200 hover:text-white border border-brand-800 text-xs font-bold uppercase tracking-widest rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center gap-2 cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
-              <span>View Our Showreel</span>
+              <span>View Work</span>
             </button>
           </motion.div>
 

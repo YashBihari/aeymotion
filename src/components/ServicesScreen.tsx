@@ -353,7 +353,7 @@ export default function ServicesScreen({ onNavigate }: ServicesScreenProps) {
                 }}
                 className="w-full py-4 rounded-xl bg-accent-600 hover:bg-accent-500 text-white font-black text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
               >
-                Start Your Project
+                Book Strategy Call
               </button>
             </div>
           </div>

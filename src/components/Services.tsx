@@ -111,7 +111,7 @@ export default function Services() {
                   href="#pricing" 
                   className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-brand-400 group-hover:text-white transition-colors group/btn cursor-pointer"
                 >
-                  <span>Start Your Project</span>
+                  <span>Book Strategy Call</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </a>
               </div>

@@ -119,7 +119,7 @@ export default function Navbar({ onNavigate, currentScreen = 'home' }: NavbarPro
             }}
             className="text-white bg-accent-600 hover:bg-accent-500 px-4 sm:px-5 py-2.5 rounded-lg text-[11px] uppercase tracking-widest font-black transition-all shadow-md shadow-accent-600/20 hover:scale-105 cursor-pointer flex items-center gap-1.5"
           >
-            <span className="font-bold tracking-wider">START YOUR PROJECT</span>
+            <span className="font-bold tracking-wider">BOOK STRATEGY CALL</span>
             <ArrowRight className="w-3 h-3" />
           </a>
         </div>

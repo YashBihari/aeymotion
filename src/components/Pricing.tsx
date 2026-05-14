@@ -21,7 +21,7 @@ const packages = [
   },
   {
     tier: "Tier 2: The Professional",
-    subtitle: "Core Scaling Ecosystem",
+    subtitle: "Growth Video Suite",
     price: "$2,400",
     originalPrice: "$3,100",
     description: "Our most sought-after solution for growing brands. A comprehensive video ecosystem engineered to showcase your product's full potential, educate your audience, and accelerate conversions.",
@@ -32,13 +32,13 @@ const packages = [
       { name: "Global Campaign Assets", detail: "Resized, reformatted, and fully localized cutdowns to reach diverse markets." },
       { name: "Advanced Distribution Playbook", detail: "A step-by-step, actionable guide to maximize measurable ROI." }
     ],
-    cta: "Deploy Core Ecosystem",
+    cta: "Deploy Growth Suite",
     popular: true, // 🔥 Most Popular highlighted
     delay: 0.2
   },
   {
     tier: "Tier 3: The Elite",
-    subtitle: "End-to-End Market Dominance",
+    subtitle: "Full Funnel Video System",
     price: "$6,200",
     originalPrice: "$7,800",
     description: "The ultimate video marketing partnership. Dominate your market with an end-to-end content strategy, limitless refinements, and top-tier assets that command industry authority.",
@@ -289,40 +289,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
   const [selectedType, setSelectedType] = useState('Explainer video');
   const [selectedDuration, setSelectedDuration] = useState('60s');
 
-  const getTargetTime = () => {
-    const today = new Date();
-    const start = new Date(today);
-    start.setHours(7, 0, 0, 0);
-    const end = new Date(start);
-    end.setHours(end.getHours() + 72);
-    const difference = end.getTime() - today.getTime();
-    if (difference <= 0) return { hours: 0, minutes: 0, seconds: 0 };
-    return {
-      hours: Math.floor((difference % (1000 * 60 * 60 * 24 * 100)) / (1000 * 60 * 60)),
-      minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-      seconds: Math.floor((difference % (1000 * 60)) / 1000)
-    };
-  };
-
-  const [timeLeft, setTimeLeft] = useState(getTargetTime);
-  const [dates, setDates] = useState({ start: '', end: '' });
-
-  useEffect(() => {
-    const today = new Date();
-    const start = new Date(today);
-    start.setHours(7, 0, 0, 0);
-    const end = new Date(start);
-    end.setHours(end.getHours() + 72);
-    
-    const formatDate = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    setDates({ start: formatDate(start), end: formatDate(end) });
-
-    const timer = setInterval(() => {
-      setTimeLeft(getTargetTime());
-    }, 1000);
-    
-    return () => clearInterval(timer);
-  }, []);
+  // Asynchronous continuous sprint pipeline models
 
   useEffect(() => {
     const checkHash = () => {
@@ -404,7 +371,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
             }`}
           >
             <Sparkles className={`w-3.5 h-3.5 ${activeMode === 'packages' ? 'text-amber-300 fill-amber-300' : 'text-brand-500'}`} />
-            <span>Core Ecosystems</span>
+            <span>Growth Video Suites</span>
           </button>
           <button
             onClick={() => {
@@ -439,7 +406,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
         </div>
       </div>
 
-      {/* Mode 1: Core Ecosystems Layout */}
+      {/* Mode 1: Growth Video Suites Layout */}
       {activeMode === 'packages' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch relative z-20">
           {packages.map((pkg, idx) => (
@@ -538,83 +505,37 @@ export default function Pricing({ onNavigate }: PricingProps) {
           transition={{ duration: 0.5 }}
           className="max-w-7xl mx-auto relative z-20"
         >
-          {/* Psychological Urgency Banner */}
-          <div className="mb-12 bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 border border-accent-500/40 rounded-3xl p-8 relative overflow-hidden shadow-[0_0_80px_rgba(234,67,53,0.15)]">
+          {/* Brand Authority Positioning Banner */}
+          <div className="mb-12 bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 border border-brand-800/80 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
             {/* Glowing orbs */}
-            <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent-500/20 blur-[100px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-red-500/10 blur-[100px] rounded-full pointer-events-none" />
-            <div className="absolute top-0 left-0 w-2 h-full bg-accent-500 animate-pulse shadow-[0_0_20px_rgba(234,67,53,0.8)]" />
+            <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-accent-500 to-purple-500" />
             
-            <div className="flex flex-col xl:flex-row items-center justify-between gap-10 relative z-10">
-              
-              {/* Left Column: Context & Copy */}
-              <div className="flex-1 text-center xl:text-left">
-                <div className="inline-flex items-center gap-3 mb-6 bg-brand-950/80 px-4 py-2 rounded-full border border-brand-800 shadow-inner">
-                  <span className="flex items-center gap-2 text-[10px] sm:text-xs font-black text-accent-400 uppercase tracking-widest">
-                    <span className="w-2 h-2 rounded-full bg-accent-500 animate-ping" />
-                    Live Intake Window
-                  </span>
-                  <div className="w-px h-3 bg-brand-700" />
-                  <span className="text-[10px] sm:text-xs font-mono text-brand-300 uppercase tracking-wider">
-                    {dates.start} — {dates.end}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+              <div className="max-w-2xl text-center md:text-left">
+                <div className="inline-flex items-center gap-2 mb-4 bg-brand-950/80 px-3.5 py-1.5 rounded-full border border-brand-800/80">
+                  <Sparkles className="w-3.5 h-3.5 text-accent-400" />
+                  <span className="text-[10px] sm:text-xs font-bold text-brand-300 uppercase tracking-widest">
+                    High-Velocity Engagement Models
                   </span>
                 </div>
                 
-                <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 leading-none">
-                  ONLY ACCEPTING <br className="hidden xl:block" /><span className="text-gradient-accent">LAST SEATS.</span>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+                  Selectively partnering with <br className="hidden sm:block" />
+                  <span className="text-gradient-accent">AI & SaaS</span> brands each month
                 </h3>
-                <p className="text-base sm:text-lg text-brand-300 max-w-xl mx-auto xl:mx-0 leading-relaxed font-medium">
-                  To guarantee elite quality, we strictly cap these sprints at <strong className="text-white">5 startups</strong> total. Once the timer hits zero or capacity is filled, this offer completely disappears.
+                <p className="text-sm sm:text-base text-brand-300 leading-relaxed font-medium">
+                  Focused sprint engagements engineered to deploy high-converting video frameworks rapidly. Zero overhead, asynchronous iteration workflows, and zero long-term retainer lock-ins.
                 </p>
               </div>
 
-              {/* Right Column: Huge Timer & Scarcity */}
-              <div className="flex flex-col sm:flex-row items-stretch gap-4 shrink-0 w-full xl:w-auto">
-                
-                {/* Huge Live Timer */}
-                <div className="bg-brand-950/90 border border-brand-800/80 rounded-2xl p-6 sm:p-8 text-center shadow-2xl flex-1 flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
-                  <div className="text-[10px] sm:text-xs uppercase font-black tracking-widest text-brand-400 mb-4 flex items-center justify-center gap-2">
-                    <Clock className="w-4 h-4 text-accent-500" />
-                    Window Closes In
-                  </div>
-                  <div className="text-5xl sm:text-6xl md:text-7xl font-mono font-black text-white tracking-tighter flex items-center justify-center gap-2 sm:gap-3">
-                    <div className="flex flex-col items-center">
-                      <span className="bg-brand-900/50 px-3 sm:px-4 py-2 rounded-xl shadow-inner text-white">{String(timeLeft.hours).padStart(2, '0')}</span>
-                      <span className="text-[9px] sm:text-[10px] text-brand-500 uppercase tracking-widest mt-2">Hours</span>
-                    </div>
-                    <span className="text-brand-600 animate-pulse pb-6 sm:pb-8">:</span>
-                    <div className="flex flex-col items-center">
-                      <span className="bg-brand-900/50 px-3 sm:px-4 py-2 rounded-xl shadow-inner text-white">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                      <span className="text-[9px] sm:text-[10px] text-brand-500 uppercase tracking-widest mt-2">Mins</span>
-                    </div>
-                    <span className="text-brand-600 animate-pulse pb-6 sm:pb-8">:</span>
-                    <div className="flex flex-col items-center">
-                      <span className="bg-brand-900/50 px-3 sm:px-4 py-2 rounded-xl shadow-inner text-accent-400 drop-shadow-[0_0_10px_rgba(234,67,53,0.3)]">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                      <span className="text-[9px] sm:text-[10px] text-accent-500/70 uppercase tracking-widest mt-2">Secs</span>
-                    </div>
-                  </div>
+              <div className="flex flex-col gap-3 shrink-0 w-full md:w-auto text-center md:text-right">
+                <div className="p-5 rounded-2xl bg-brand-950/90 border border-brand-800/60 backdrop-blur-sm shadow-inner">
+                  <span className="text-[10px] text-brand-400 font-bold uppercase tracking-widest block mb-1">Deployment Speed</span>
+                  <span className="text-2xl sm:text-3xl font-black text-white font-mono">72h — 5 Days</span>
+                  <span className="text-[9px] text-accent-400 uppercase tracking-wider block mt-1 font-extrabold">Sprint Execution</span>
                 </div>
-
-                {/* Capacity Counter */}
-                <div className="bg-gradient-to-b from-brand-900/90 to-brand-950 border border-accent-500/40 rounded-2xl p-6 sm:p-8 min-w-[200px] shrink-0 text-center flex flex-col justify-center relative shadow-xl">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-accent-500/10 blur-xl rounded-full" />
-                  <div className="text-[10px] sm:text-xs uppercase font-black tracking-widest text-brand-400 mb-5">
-                    Total Seats Available
-                  </div>
-                  <div className="flex items-center justify-center gap-5 sm:gap-6 mb-2">
-                    <div className="flex flex-col items-center opacity-60">
-                      <span className="text-brand-500 line-through decoration-brand-500/50 text-4xl sm:text-5xl font-black">5</span>
-                      <span className="text-[9px] sm:text-[10px] text-brand-500 uppercase tracking-widest mt-2">Total</span>
-                    </div>
-                    <ArrowRight className="w-6 h-6 text-brand-600 shrink-0" />
-                    <div className="flex flex-col items-center">
-                      <span className="text-6xl sm:text-7xl font-black text-accent-400 drop-shadow-[0_0_20px_rgba(234,67,53,0.6)] animate-pulse">2</span>
-                      <span className="text-[11px] sm:text-xs text-accent-400 font-black uppercase tracking-widest mt-2">Left</span>
-                    </div>
-                  </div>
-                </div>
-                
               </div>
             </div>
           </div>
@@ -773,8 +694,8 @@ export default function Pricing({ onNavigate }: PricingProps) {
             <div className="lg:col-span-5 flex flex-col justify-between bg-brand-950/90 rounded-2xl p-5 border border-brand-800/90 shadow-inner">
               <div>
                 <div className="text-[10px] font-black text-brand-400 uppercase tracking-widest mb-4 pb-2 border-b border-brand-900 flex items-center justify-between">
-                  <span>Target Trajectory Engine</span>
-                  <span className="text-purple-400 font-mono">Verified Anchor</span>
+                  <span>Project Scope</span>
+                  <span className="text-purple-400 font-mono">Estimated Pricing</span>
                 </div>
 
                 <div className="space-y-4">
@@ -784,7 +705,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
                   </div>
 
                   <div className="p-3 rounded-xl bg-brand-900/40 border border-brand-800/40">
-                    <span className="text-[10px] font-bold text-brand-400 uppercase tracking-wider block mb-0.5">Total Pipeline Velocity</span>
+                    <span className="text-[10px] font-bold text-brand-400 uppercase tracking-wider block mb-0.5">Total Estimated Delivery</span>
                     <span className="text-xl font-black text-accent-400 font-mono">{typePricingMatrix[selectedType]?.[selectedDuration]?.days || 11} business days</span>
                   </div>
                 </div>
@@ -816,7 +737,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
                   </div>
                 ))}
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-accent-500/10 border border-accent-500/30 text-xs font-bold mt-4 shadow-sm">
-                  <span className="text-white font-black uppercase tracking-wider">Total Delivery Lifecycle</span>
+                  <span className="text-white font-black uppercase tracking-wider">Total Estimated Delivery</span>
                   <span className="text-accent-300 font-mono font-black text-sm">{typePricingMatrix[selectedType]?.[selectedDuration]?.days || 11} business days</span>
                 </div>
               </div>
@@ -824,7 +745,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
 
             <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center text-center lg:text-right border-t lg:border-t-0 pt-8 lg:pt-0 border-brand-800/80">
               <div className="inline-block px-3 py-1 rounded bg-brand-900/80 border border-brand-800 text-[10px] font-black tracking-widest uppercase text-brand-400 mb-2">
-                Estimated Scope Anchor
+                Estimated Pricing Range
               </div>
               <div className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-3">
                 {typePricingMatrix[selectedType]?.[selectedDuration]?.range || "$800 - $1,250"}

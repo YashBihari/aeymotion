@@ -513,7 +513,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
             <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-accent-500 to-purple-500" />
             
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-              <div className="max-w-2xl text-center md:text-left">
+              <div className="max-w-3xl text-center md:text-left">
                 <div className="inline-flex items-center gap-2 mb-4 bg-brand-950/80 px-3.5 py-1.5 rounded-full border border-brand-800/80">
                   <Sparkles className="w-3.5 h-3.5 text-accent-400" />
                   <span className="text-[10px] sm:text-xs font-bold text-brand-300 uppercase tracking-widest">
@@ -528,14 +528,6 @@ export default function Pricing({ onNavigate }: PricingProps) {
                 <p className="text-sm sm:text-base text-brand-300 leading-relaxed font-medium">
                   Focused sprint engagements engineered to deploy high-converting video frameworks rapidly. Zero overhead, asynchronous iteration workflows, and zero long-term retainer lock-ins.
                 </p>
-              </div>
-
-              <div className="flex flex-col gap-3 shrink-0 w-full md:w-auto text-center md:text-right">
-                <div className="p-5 rounded-2xl bg-brand-950/90 border border-brand-800/60 backdrop-blur-sm shadow-inner">
-                  <span className="text-[10px] text-brand-400 font-bold uppercase tracking-widest block mb-1">Deployment Speed</span>
-                  <span className="text-2xl sm:text-3xl font-black text-white font-mono">72h — 5 Days</span>
-                  <span className="text-[9px] text-accent-400 uppercase tracking-wider block mt-1 font-extrabold">Sprint Execution</span>
-                </div>
               </div>
             </div>
           </div>
